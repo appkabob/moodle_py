@@ -1,10 +1,10 @@
 
 
 class Interaction:
-    def __init__(self, _id, slide_id, latency, result, student_response, time, type, weighting):
+    def __init__(self, _id, userid, slide_id, result, student_response, time, type, weighting):
         self.id = _id
+        self.userid = userid
         self.slide_id = slide_id
-        self.latency = latency
         self.result = result
         self.student_response = student_response
         self.time = time

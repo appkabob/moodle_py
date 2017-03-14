@@ -16,8 +16,8 @@ class Moodle:
         r = requests.post(url=constants.MOODLE_QUERY_URL, data=payload, headers=constants.HEADERS, params=querystring)
 
         if r.status_code == requests.codes.ok or r.status_code == 201:
-            print(r)
+            # print(r)
             return r.json()
 
-        print('error', r)
+        # print('error', r)
         return r.message
