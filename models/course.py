@@ -40,8 +40,8 @@ class Course:
         for key, val in interactions_data.items():
             self.interactions.append(Interaction(
                 key,
-                val['id'],
                 self.userid,
+                val['id'],
                 val['result'],
                 val['student_response'],
                 val['time'],
