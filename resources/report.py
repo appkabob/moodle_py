@@ -37,7 +37,7 @@ class Report:
         styles = getSampleStyleSheet()
 
         # Header
-        header = Paragraph('Participant: {} {}, IEIN: {}'.format(self.user.firstname, self.user.lastname, self.user.iein), styles['Normal'])
+        header = Paragraph('Participant: {} {}, IEIN: {}, AA #1803'.format(self.user.firstname, self.user.lastname, self.user.iein), styles['Normal'])
         w, h = header.wrap(doc.width, doc.topMargin)
         header.drawOn(canvas, doc.leftMargin, doc.height + doc.topMargin - h)
 
