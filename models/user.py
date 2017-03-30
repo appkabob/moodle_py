@@ -26,7 +26,7 @@ class User:
 
     @classmethod
     def get_users_enrolled(cls, courseid):
-        payload = 'courseid={}'.format(courseid)
+        payload = 'courseid={}&options[0][name]=onlyactive&options[0][value]=1'.format(courseid)
         users_list = Moodle().submit_request('core_enrol_get_enrolled_users', payload)
         users_objs = []
         for user in users_list:
