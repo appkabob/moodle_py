@@ -74,9 +74,10 @@ class Report:
 
 
 class CourseEvaluationReport(Report):
-    def __init__(self, course, user):
+    def __init__(self, course, user, interactions):
         Report.__init__(self, course, user)
         self.name = "CourseEval_BeyondCompliance_{}{}_{}.pdf".format(self.user.firstname, self.user.lastname, self.user.iein)
+        self.interactions = interactions
 
     def __repr__(self):
         return "<CourseEvalReport {} {}>".format(self.course.name, self.user.email)
@@ -95,8 +96,9 @@ class CourseEvaluationReport(Report):
 
         title = '<font size=12>%s</font>' % titletext
 
+        essay_response = ''
         questions = []
-        for interaction in sorted(self.course.interactions, key=lambda x: x.id if x.id else 'interactions_1000'):
+        for interaction in sorted(self.interactions, key=lambda x: x.id if x.id else 'interactions_1000'):
             if interaction.slide_id == 'Scene1_Slide15_LikertScale_0_0':
                 questions.extend(self._interpret_likert(interaction.student_response))
 
@@ -136,9 +138,10 @@ class CourseEvaluationReport(Report):
 
 
 class ApplicationDisseminationReport(Report):
-    def __init__(self, course, user):
+    def __init__(self, course, user, interactions):
         Report.__init__(self, course, user)
         self.name = "AD_BeyondCompliance_{}{}_{}.pdf".format(self.user.firstname, self.user.lastname, self.user.iein)
+        self.interactions = interactions
 
     def __repr__(self):
         return "<AppDissReport {} {}>".format(self.course.name, self.user.email)
@@ -180,7 +183,7 @@ class ApplicationDisseminationReport(Report):
         question1ftext = '<strong>1f) What are new ideas you will implement for pre/post conversations and observations to improve and expand your observation practice?</strong>'
 
         part1data = []
-        for interaction in sorted(self.course.interactions, key=lambda x: x.id if x.id else 'interactions_1000'):
+        for interaction in sorted(self.interactions, key=lambda x: x.id if x.id else 'interactions_1000'):
             if interaction.slide_id == 'Scene1_Slide19_Essay_0_0':
                 part1data.append([Paragraph(question1atext, styles["Normal"]),
                                   Paragraph(interaction.student_response, styles["Normal"])])
@@ -217,7 +220,7 @@ class ApplicationDisseminationReport(Report):
             Paragraph('Resources', styles["Heading4"])
         ]]
         outcomes = []
-        for interaction in self.course.interactions:
+        for interaction in self.interactions:
             # print(interaction.id)
             # print(interaction.student_response)
             if interaction.slide_id == 'Scene1_Slide25_Essay_0_0':
@@ -264,7 +267,7 @@ class ApplicationDisseminationReport(Report):
 
 
         progress_date_answer = None
-        for interaction in self.course.interactions:
+        for interaction in self.interactions:
             if interaction.slide_id == 'Scene1_Slide26_Essay_0_0':
                 progress_date_answer = interaction.student_response
 

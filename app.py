@@ -1,58 +1,33 @@
-import constants
-from models.moodle_utils import Moodle
 from models.course import BeyondComplianceCourse
-from resources.report import ApplicationDisseminationReport, CourseEvaluationReport
-from models.user import User
-from models.email import BCYouShouldLiveChatEmail
 
-# email = BCYouShouldLiveChatEmail('nick.alexander@cecillinois.org')
+print('\n\t1: Generate Reports for Beyond Compliance: Application Dissemination and Course Evaluation Reports')
+print('\t2: Send Email to Beyond Compliance Users: "You should sign up for imminent live chat" email\n')
+menu = input('Please enter a number corresponding to one of the options above:\n')
 
-users = User.get_users_enrolled(4)
-course = BeyondComplianceCourse()
-groups = course.fetch_groups()
-demo_group = [group for group in groups if group.name == 'Demo'][0]
-demo_group.fetch_userids()
+if menu == '1':
 
-userids_to_exclude = [22, 24, 25, 38]  # 154 test admin accounts
-userids_to_exclude.extend(demo_group.userids)
+    print('\nGenerating reports...\n')
+    BeyondComplianceCourse().generate_aa_reports()
+    print('\nDone - you can find the reports in this project\'s "output" directory')
 
-users = [user for user in users if user.userid not in userids_to_exclude]
+elif menu == '2':
 
-users_to_email = []
-for user in users:
-    # course = Course(name='Beyond Compliance Part 3', courseid=4)
-    course.activities = []
-    activities = course.fetch_activities_status_by_user(userid=user.userid)
+    print('Gathering recipients...')
+    course = BeyondComplianceCourse()
+    users_to_email = course.get_enrolled_users_not_registered_for_live_chat()
 
-    if activities:
-        for activity in activities:
-            if activity.status['cmid'] == 46 and activity.status['state'] == 0:
-                users_to_email.append(user)
-                break
+    is_test = True
+    if is_test:
+        print('Dev mode: if you answer yes, message(s) will be sent, but they\'ll go to the admin user instead of would-be recipient(s). Proceed? y/n:')
+    else:
+        print('If you answer yes to the following this will email actual users. Proceed? y/n:')
+    send_emails = input()
 
-print('USERS TO EMAIL:')
-print(users_to_email)
+    if send_emails.lower() == 'y' or send_emails.lower() == 'yes':
+        course.send_email_you_should_register_for_live_chat('March 30 at 1 pm', '60', users_to_email, is_test)
+        print('Done')
+    else:
+        print('Canceled, nothing sent')
 
-proceed = input('Proceed? ')
-if proceed == 'y':
-    for user in users_to_email:
-        # BCYouShouldLiveChatEmail(user, 'March 30 at 1 pm').send()
-        pass
-
-
-
-
-# # users = User.get_users_for_course(4)
-# users = User.get_users_enrolled(4)
-#
-# for user in users:
-#     # if user.userid == 36 or user.userid == 35:
-#     course = Course(name='Beyond Compliance Part 3', scoid=12, userid=user.userid)
-#     interactions = course.fetch_interactions_by_user(user.userid)
-#     if interactions and user.userid != 6:
-#         print(user)
-#         ce_report = CourseEvaluationReport(course, user)
-#         ce_report.save_pdf()
-#         ad_report = ApplicationDisseminationReport(course, user)
-#         ad_report.save_pdf()
-#         # break
+else:
+    print('Error: you must enter a number corresponding to one of the menu options')
