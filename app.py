@@ -1,6 +1,6 @@
 import constants
 from models.moodle_utils import Moodle
-from models.course import Course
+from models.course import BeyondComplianceCourse
 from resources.report import ApplicationDisseminationReport, CourseEvaluationReport
 from models.user import User
 from models.email import BCYouShouldLiveChatEmail
@@ -8,7 +8,7 @@ from models.email import BCYouShouldLiveChatEmail
 # email = BCYouShouldLiveChatEmail('nick.alexander@cecillinois.org')
 
 users = User.get_users_enrolled(4)
-course = Course(name='BeyondCompliancePart3', courseid=constants.COURSE_IDS['beyond_compliance'])
+course = BeyondComplianceCourse()
 groups = course.fetch_groups()
 demo_group = [group for group in groups if group.name == 'Demo'][0]
 demo_group.fetch_userids()
@@ -36,7 +36,8 @@ print(users_to_email)
 proceed = input('Proceed? ')
 if proceed == 'y':
     for user in users_to_email:
-        BCYouShouldLiveChatEmail(user, 'March 30 at 1 pm').send()
+        # BCYouShouldLiveChatEmail(user, 'March 30 at 1 pm').send()
+        pass
 
 
 

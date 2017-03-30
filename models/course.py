@@ -1,3 +1,4 @@
+import constants
 from models.activity import Activity
 from models.group import Group
 from models.interaction import Interaction
@@ -5,7 +6,7 @@ from models.moodle_utils import Moodle
 
 
 class Course:
-    def __init__(self, name, userid=None, scoid=None, courseid=None, status=None, max_score=None, min_score=None, raw_score=None, total_time=None):
+    def __init__(self, name=None, userid=None, scoid=None, courseid=None, status=None, max_score=None, min_score=None, raw_score=None, total_time=None):
         self.name = name
         self.userid = userid
         self.scoid = scoid
@@ -65,7 +66,7 @@ class Course:
 
         for activity in activities['statuses']:
             self.activities.append(Activity(
-                self.userid,
+                userid,
                 activity
             ))
 
@@ -85,3 +86,13 @@ class Course:
             ))
 
         return self.groups
+
+
+class BeyondComplianceCourse(Course):
+    def __init__(self):
+        self.name = 'Beyond Compliance'
+        self.courseid = constants.COURSE_IDS['beyond_compliance']
+        self.groups = []
+
+    def __repr__(self):
+        return "<BeyondComplianceCourse>"
