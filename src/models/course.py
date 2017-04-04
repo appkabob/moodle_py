@@ -1,5 +1,5 @@
 import constants
-from src.resources.report import CourseEvaluationReport, ApplicationDisseminationReport
+from ..resources.report import CourseEvaluationReport, ApplicationDisseminationReport
 from .activity import Activity
 from .email import Email
 from .group import Group
