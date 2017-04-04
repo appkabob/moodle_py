@@ -1,5 +1,5 @@
-from models.interaction import Interaction
-from models.moodle_utils import Moodle
+from .interaction import Interaction
+from .moodle_utils import Moodle
 
 
 class Activity:

@@ -1,10 +1,10 @@
 import constants
-from models.activity import Activity
-from models.email import Email
-from models.group import Group
-from models.moodle_utils import Moodle
-from models.user import User
-from resources.report import CourseEvaluationReport, ApplicationDisseminationReport
+from .activity import Activity
+from .email import Email
+from .group import Group
+from .moodle_utils import Moodle
+from .user import User
+from ..resources.report import CourseEvaluationReport, ApplicationDisseminationReport
 
 
 class Course:

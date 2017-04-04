@@ -1,4 +1,4 @@
-from models.moodle_utils import Moodle
+from .moodle_utils import Moodle
 
 
 class User:
