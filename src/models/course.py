@@ -1,10 +1,10 @@
 import constants
+from src.resources.report import CourseEvaluationReport, ApplicationDisseminationReport
 from .activity import Activity
 from .email import Email
 from .group import Group
 from .moodle_utils import Moodle
 from .user import User
-from ..resources.report import CourseEvaluationReport, ApplicationDisseminationReport
 
 
 class Course:
@@ -134,7 +134,7 @@ class BeyondComplianceCourse(Course):
             to_users = self.get_enrolled_users_not_registered_for_live_chat()
 
         for to_user in to_users:
-            body_template = 'email_templates/BCYouShouldLiveChatEmail.txt'
+            body_template = 'src/email_templates/BCYouShouldLiveChatEmail.txt'
             with open(body_template, 'r') as f:
                 read_data = f.read()
             body = read_data.\

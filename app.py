@@ -1,4 +1,5 @@
-from models.course import BeyondComplianceCourse
+import src.models
+from src.models.course import BeyondComplianceCourse
 
 print('\n\t1: Generate Reports for Beyond Compliance: Application Dissemination and Course Evaluation Reports')
 print('\t2: Send Email to Beyond Compliance Users: "You should sign up for imminent live chat" email\n')
