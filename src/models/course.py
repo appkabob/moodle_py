@@ -1,4 +1,5 @@
 import constants
+from pathlib import Path
 from ..resources.report import CourseEvaluationReport, ApplicationDisseminationReport
 from .activity import Activity
 from .email import Email
@@ -133,8 +134,9 @@ class BeyondComplianceCourse(Course):
         if not to_users:
             to_users = self.get_enrolled_users_not_registered_for_live_chat()
 
+        path = Path(__file__).parents[1]
         for to_user in to_users:
-            body_template = 'src/email_templates/BCYouShouldLiveChatEmail.txt'
+            body_template = '{}/email_templates/BCYouShouldLiveChatEmail.txt'.format(path)
             with open(body_template, 'r') as f:
                 read_data = f.read()
             body = read_data.\
