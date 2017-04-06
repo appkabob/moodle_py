@@ -1,6 +1,6 @@
 import constants
 from pathlib import Path
-from ..resources.report import CourseEvaluationReport, ApplicationDisseminationReport
+# from ..resources.report import CourseEvaluationReport, ApplicationDisseminationReport
 from .activity import Activity
 from .email import Email
 from .group import Group

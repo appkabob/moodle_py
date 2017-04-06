@@ -15,6 +15,18 @@ class User:
         return '<User {} {}>'.format(self.userid, self.username)
 
     @classmethod
+    def fetch_user_by_username(cls, username):
+        payload = 'criteria[0][key]=username&criteria[0][value]={}'.format(username)
+        user = Moodle().submit_request('core_user_get_users', payload)['users'][0]
+
+        iein = None
+        for field in user['customfields']:
+            if field['shortname'] == 'iein':
+                iein = field['value']
+
+        return cls(user['id'], user['username'], user['email'], user['firstname'], user['lastname'], iein)
+
+    @classmethod
     def get_users_for_course(cls, courseid):
         payload = 'courseid={}'.format(courseid)
         users_list = Moodle().submit_request('gradereport_user_get_grades_table', payload)
