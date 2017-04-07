@@ -4,7 +4,7 @@ from .moodle_utils import Moodle
 
 class Email:
     def __init__(self, to_user, body):
-        self.to = to_user
+        self.to_user = to_user
         self.body = body
 
     def send(self, is_test=False):

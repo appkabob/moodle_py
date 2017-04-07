@@ -25,7 +25,7 @@ elif menu == '2':
     send_emails = input()
 
     if send_emails.lower() == 'y' or send_emails.lower() == 'yes':
-        course.send_email_you_should_register_for_live_chat('March 30 at 1 pm', '60', users_to_email, is_test)
+        course.send_email_you_should_register_for_live_chat('April 11 at 11 am', '60', users_to_email, is_test)
         print('Done')
     else:
         print('Canceled, nothing sent')
