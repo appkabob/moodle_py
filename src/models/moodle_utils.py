@@ -13,7 +13,7 @@ class Moodle:
         #                                                                constants.MOODLEWSRESTFORMAT, wsfunction)
         querystring = {"wstoken": constants.WSTOKEN, "moodlewsrestformat": "json",
                        "wsfunction": wsfunction}
-        r = requests.post(url=constants.MOODLE_QUERY_URL, data=payload, headers=constants.HEADERS, params=querystring)
+        r = requests.post(url=constants.MOODLE_QUERY_URL, data=payload, headers=constants.MOODLE_HEADERS, params=querystring)
 
         if r.status_code == requests.codes.ok or r.status_code == 201:
             # print(r)

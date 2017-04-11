@@ -1,0 +1,16 @@
+This is a reminder that you signed up to attend a Live Chat Session today at {timeoflivechat}.
+
+<p>To join the session, a few minutes before {timeoflivechat} you will need to:</p>
+
+<ol><li>Log in to your CEC Learning Network account at cecweb.org/learn</li>
+<li>Click on the Beyond Compliance Administrator Academy course</li>
+<li>Go to Section 4: Live Chat Session</li>
+<li>Click the "Launch Live Chat Session" button</li></ol>
+
+<p>Please try to log in a few minutes before the start of the session to allow time to troubleshoot any technical issues.</p>
+
+<p>If you have any questions or problems logging in, please contact support:
+
+<br />(888) 820-7077
+
+<br />learningnetwork@cecillinois.org</p>
