@@ -1,4 +1,7 @@
-import constants
+try:
+    import constants
+except ImportError:
+    pass
 from .moodle_utils import Moodle
 
 

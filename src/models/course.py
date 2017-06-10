@@ -1,4 +1,7 @@
-import constants
+try:
+    import constants
+except ImportError:
+    pass
 from pathlib import Path
 # from ..resources.report import CourseEvaluationReport, ApplicationDisseminationReport
 from .activity import Activity

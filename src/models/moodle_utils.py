@@ -1,5 +1,8 @@
 import requests
-import constants
+try:
+    import constants
+except ImportError:
+    pass
 
 
 class Moodle:
