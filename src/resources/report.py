@@ -6,6 +6,8 @@ from reportlab.lib.units import inch
 from reportlab.lib import colors
 from datetime import date
 
+import constants
+
 
 class Report:
     def __init__(self, course, user):
@@ -21,7 +23,7 @@ class Report:
 
     def save_pdf(self):
         doc = SimpleDocTemplate(
-            "output/{}/{}".format(self.output_subdir, self.name),
+            "{}/output/{}/{}".format(constants.PROJECT_ROOT_ABS_PATH, self.output_subdir, self.name),
             pagesize=letter,
             rightMargin=36, leftMargin=36,
             topMargin=55, bottomMargin=40)

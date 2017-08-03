@@ -23,4 +23,5 @@ class Moodle:
             return r.json()
 
         # print('error', r)
+        raise IOError(r.message)
         return r.message
