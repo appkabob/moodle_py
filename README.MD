@@ -1,3 +1,11 @@
+# Purpose
+
+Use this library to pull data from your Moodle instance via the Moodle API.
+
+You can use it in combination with libraries like [reportlab](https://pypi.python.org/pypi/reportlab) to automatically generate custom reports out of Moodle, or use it to schedule custom emails to go out based on specific events in Moodle, e.g. email all users who have completed a particular activity in Moodle, but have not completed a synchronous event in Adobe Connect, for example.
+
+This Python library can help bridge the gap between Moodle and your other systems.
+
 # Pre-Requisites:
 
 Tested with Moodle 3.2.2+
