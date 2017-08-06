@@ -5,9 +5,10 @@ Tested with Moodle 3.2.2+
 You will need to do some setup in your Moodle installation to enable API calls to be made.
 
 1. Create a Custom Service, where you can define what Functions (API calls) the user is allowed to make.
-Don't worry, you can always add to this later.
+Don't worry, you can always add to this later (specific functions listed at the bottom of this document)
 2. Create a Moodle user specifically for API access
 3. Add the user as an Authorized user to the Custom Service
+4. Download this library, enter your information into the constants_sample.py file, rename it to constants.py and place it in your project's root
 
 # Detailed Instructions for the above Pre-Requisites
 
