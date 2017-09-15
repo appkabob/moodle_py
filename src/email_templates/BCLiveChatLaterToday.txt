@@ -1,4 +1,4 @@
-This is a reminder that you signed up to attend a Live Chat Session today at {timeoflivechat}.
+This is a reminder that you signed up to attend a Live Chat Session <strong>today at {timeoflivechat}</strong>.
 
 <p>To join the session, a few minutes before {timeoflivechat} you will need to:</p>
 
@@ -13,4 +13,4 @@ This is a reminder that you signed up to attend a Live Chat Session today at {ti
 
 <br />(888) 820-7077
 
-<br />learningnetwork@cecillinois.org</p>
+<br />learningnetwork@cecweb.org</p>
