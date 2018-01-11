@@ -15,9 +15,28 @@ class User:
         return '<User {} {}>'.format(self.userid, self.username)
 
     @classmethod
+    def fetch_user_by_id(cls, id):
+        payload = 'criteria[0][key]=userid&criteria[0][value]={}'.format(id)
+        user = Moodle().submit_request('core_user_get_users', payload)['users']
+        if len(user) == 0:
+            return None
+        user = user[0]
+
+        iein = None
+        if hasattr(user, 'customfields'):
+            for field in user['customfields']:
+                if field['shortname'] == 'iein':
+                    iein = field['value']
+
+        return cls(user['id'], user['username'], user['email'], user['firstname'], user['lastname'], iein)
+
+    @classmethod
     def fetch_user_by_username(cls, username):
         payload = 'criteria[0][key]=username&criteria[0][value]={}'.format(username)
-        user = Moodle().submit_request('core_user_get_users', payload)['users'][0]
+        user = Moodle().submit_request('core_user_get_users', payload)['users']
+        if len(user) == 0:
+            return None
+        user = user[0]
 
         iein = None
         for field in user['customfields']:
